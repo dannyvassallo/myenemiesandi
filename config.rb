@@ -2,6 +2,8 @@
 # Page options, layouts, aliases and proxies
 ###
 activate :php
+activate :dotenv
+
 # Per-page layout changes:
 #
 # With no layout

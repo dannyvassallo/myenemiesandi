@@ -30,13 +30,12 @@ function getTweets(screenName){
   });
 }
 
-
 function check_tweets( event ) {
   setTimeout(function(){
     keepChecking = setInterval(function(){
       getTweets(twitterHandle);
     }, 1000);
-  }, 100);
+  }, 500);
 }
 
 window.twttr = (function (d,s,id) {

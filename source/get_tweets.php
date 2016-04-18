@@ -1,10 +1,7 @@
 <?php
 require_once('twitter_proxy.php');
 // Twitter OAuth Config options
-$oauth_access_token = '18792825-Xp5AfcibMpCdQkpiOTgQ9oA1pUwGxvVWP2dGD9lJ9';
-$oauth_access_token_secret = 'z8i9xpJffEFHGUXIaMTp8Y0b1Xyxt1soAMfaE647c35PR';
-$consumer_key = 'EjyfaMmhpOmf1IPMyww1KdUS1';
-$consumer_secret = '5wICsYnI76KK6iVGTYxkVwZjT0SvPH46DZeqAyXC92RUKKNnsm';
+require_once('twitter_creds.php');
 $user_id = '78884300';
 $screen_name = $_POST['screenName'];
 $count = 1;

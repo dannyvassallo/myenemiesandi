@@ -4,3 +4,4 @@
 //= require _custom
 //= require _spotify
 //= require _twitter
+//= require _facebook

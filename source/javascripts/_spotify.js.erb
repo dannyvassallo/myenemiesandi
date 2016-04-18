@@ -4,7 +4,7 @@ var artistId = "0TQX3oIwJihCIx1fNCeNcF";
 (function() {
 
     function login(callback) {
-        var CLIENT_ID = 'b78f0b3542b24da9a437ff78735eb9db';
+        var CLIENT_ID = "<%= ENV['SPOTIFY_CLIENT_ID'] %>";
         var REDIRECT_URI = siteUrl+'spotify/callback';
         function getLoginURL(scopes) {
             return 'https://accounts.spotify.com/authorize?client_id=' + CLIENT_ID +
