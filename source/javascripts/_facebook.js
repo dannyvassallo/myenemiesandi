@@ -19,5 +19,5 @@ function fb_share() {
 }
 
 $(document).ready(function(){
-  $('button.share-btn').on( 'click', fb_share );
+  $('.fb-share-btn').on( 'click', fb_share );
 });
