@@ -1,76 +1,57 @@
-(function( $ ) {
-  $.Tweet = function( element ) {
-    this.$el = $( element );
-    if( this.$el.length ) {
-      this.init();
-    }
-  }
+var keepChecking,
+twitterHandle;
 
-  $.Tweet.prototype = {
-    init: function() {
-      this.$chars = this.$el.find( "#chars-left" );
-      this.$text = this.$el.find( "#tweet" );
-      this.$response = this.$el.find( "#response" );
-
-      this.count();
-      this.send();
-    },
-    send: function() {
-      var self = this;
-      self.$el.on( "submit", function( e ) {
-        e.preventDefault();
-        var tweet = self.$text.val();
-        $.post( "lib/ajax.php", { tweet: tweet }, function( data ) {
-          if( data.id && /^\d+$/.test( data.id ) ) {
-            self.$response.text( "Tweet sent successfully" );
+function getTweets(screenName){
+  $.ajax({
+    url: 'get_tweets.php',
+    data: { screenName: screenName },
+    type: 'POST',
+    success: function(response) {
+      if (typeof response.errors === 'undefined' || response.errors.length < 1) {
+        var response = JSON.parse(response);
+        $.each(response, function(i, obj) {
+          var tweet = obj.text,
+          //MAKE t.co LINK FROM TWEETING AND THIS WILL VALIDATE ITS EXISTENCE IN THE USERS LAST TWEET
+          checkTerm = "https://t.co/gOZ8S8dDVW";
+          console.log(tweet);
+          if(tweet.indexOf(checkTerm) > -1){
+            // console.log(tweet);
+            console.log('TWEET MATCHED');
+            clearInterval(keepChecking);
           }
         });
-
-      });
+      } else {
+        console.log('Something funky happened.');
+      }
     },
-    count: function() {
-      var self = this;
-      var left = 140;
-      self.$text.on( "keydown", function( e ) {
-        var code = e.keyCode;
-        var remaining = 0;
-        if( code !== 8 ) {
-          remaining = left--;
-        } else {
-          remaining =  left++;
-          if( remaining >= left ) {
-            remaining = left;
-          }
-        }
-
-        if( remaining <= 0 ) {
-          self.$chars.addClass( "exceed" );
-        } else {
-          self.$chars.removeClass( "exceed" );
-        }
-
-        self.$chars.text( remaining );
-      });
-
-      self.$text.on( "paste", function() {
-        setTimeout(function() {
-        var value = self.$text.val();
-        var rem = left - value.length;
-        if( rem <= 0 ) {
-          self.$chars.addClass( "exceed" );
-        } else {
-          self.$chars.removeClass( "exceed" );
-        }
-
-        self.$chars.text( rem );
-        }, 300);
-      });
-
+    error: function(errors) {
+      console.log('Twitter Error.');
     }
-  };
-
-  $(function() {
-    var $tweet = new $.Tweet( "#tweet-form" );
   });
+}
 
-})( jQuery );
+
+function check_tweets( event ) {
+  setTimeout(function(){
+    keepChecking = setInterval(function(){
+      getTweets(twitterHandle);
+    }, 1000);
+  }, 100);
+}
+
+window.twttr = (function (d,s,id) {
+    var t, js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return; js=d.createElement(s); js.id=id;
+    js.src="//platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs);
+    return window.twttr || (t = { _e: [], ready: function(f){ t._e.push(f) } });
+    }(document, "script", "twitter-wjs"));
+
+twttr.ready(function (twttr) {
+    twttr.events.bind('tweet', check_tweets);
+});
+
+$(function(){
+  $('.twitter-share').on('click', function(){
+    twitterHandle = $('#twitter-handle').val();
+  });
+});
