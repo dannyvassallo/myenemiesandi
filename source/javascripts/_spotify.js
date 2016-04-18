@@ -1,8 +1,11 @@
+// ARTIST ID
+var artistId = "0TQX3oIwJihCIx1fNCeNcF";
+
 (function() {
 
     function login(callback) {
-        var CLIENT_ID = '6b284830006843e7ae7b170725715aed';
-        var REDIRECT_URI = 'http://jmperezperez.com/spotify-oauth-jsfiddle-proxy/';
+        var CLIENT_ID = 'b78f0b3542b24da9a437ff78735eb9db';
+        var REDIRECT_URI = siteUrl+'spotify/callback';
         function getLoginURL(scopes) {
             return 'https://accounts.spotify.com/authorize?client_id=' + CLIENT_ID +
               '&redirect_uri=' + encodeURIComponent(REDIRECT_URI) +
@@ -11,7 +14,7 @@
         }
 
         var url = getLoginURL([
-            'playlist-modify-public'
+            'user-follow-modify'
         ]);
 
         var width = 450,
@@ -33,16 +36,16 @@
 
     }
 
-    function followPlaylist(accessToken, playlistUri) {
-        var parts = playlistUri.split(':');
+    function followArtist(accessToken, artistId) {
         $.ajax({
-            url: 'https://api.spotify.com/v1/users/' + parts[2] + '/playlists/' + parts[4] + '/followers',
+            url: 'https://api.spotify.com/v1/me/following?type=artist&ids='+artistId,
             headers: {
                'Authorization': 'Bearer ' + accessToken
             },
             method: 'PUT',
             success: function() {
                 followButton.textContent = 'Following';
+                alert('followed');
             },
             dataType: 'html',
             error: function(e) {
@@ -51,12 +54,11 @@
         });
     }
 
-    var followButton = document.getElementById('btn-follow'),
-        playlistUriInput = document.getElementById('playlist-uri');
+    var followButton = document.getElementById('btn-follow');
 
     followButton.addEventListener('click', function() {
         login(function(accessToken) {
-            followPlaylist(accessToken, playlistUriInput.value);
+            followArtist(accessToken, artistId);
         });
     });
 
