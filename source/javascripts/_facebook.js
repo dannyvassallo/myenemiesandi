@@ -10,7 +10,7 @@ function fb_share() {
     },
     function(response) {
       if (response && response.post_id) {
-        Materialize.toast('Thanks for your entry!', 5000, 'green lighten-2');
+        Materialize.toast('Thanks for your entry!', 5000, 'green darken-4');
         setTimeout(function(){
             $('#submission-form').submit();
         }, 100);
@@ -19,7 +19,7 @@ function fb_share() {
             $('#facebook-email').val('');
         }, 300);
       } else {
-        Materialize.toast('You must publish the share to enter.', 5000, 'red lighten-2');
+        Materialize.toast('You must publish the share to enter.', 5000, 'red darken-4');
       }
     }
   );
@@ -32,7 +32,7 @@ $(document).ready(function(){
       $('#facebook-share-input').val('TRUE');
       fb_share();
     } else {
-      Materialize.toast('Your must enter your email.', 5000, 'red lighten-2');
+      Materialize.toast('Your must enter your email.', 5000, 'red darken-4');
     }
   });
 });
