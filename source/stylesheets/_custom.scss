@@ -8,9 +8,13 @@
 }
 
 .band-logo{
-  margin-bottom: -28%;
-  z-index: 9999;
+  margin-bottom: -15%;
   position: relative;
+  margin-top: -4%;
+}
+
+h1,h2,h3,h4,h5,h6{
+  margin: 0 auto;
 }
 
 body{
@@ -18,4 +22,42 @@ body{
   color: white !important;
   font-family: 'Lucida Bright';
   text-transform: uppercase;
+}
+
+.album-cta{
+  .valign{
+    -ms-transform: rotate(2deg);
+    -webkit-transform: rotate(2deg);
+    transform: rotate(2deg);
+    width: 100%;
+    text-shadow: 2px 4px 3px #000;
+  }
+}
+
+.album-mini{
+  margin-bottom: -28%;
+  z-index: 9999;
+  position: relative;
+}
+
+.album{
+  -ms-transform: rotate(-8deg);
+  -webkit-transform: rotate(-8deg);
+  transform: rotate(-8deg);
+  margin-bottom: 45px;
+  margin-left: 61px;
+  margin-top: 16px;
+  width: 90%;
+}
+
+.band-promo{
+  margin-top: -19%;
+}
+
+.cta{
+  margin-top: 5%;
+  font-size: 25px;
+  text-shadow: 2px 4px 3px #000;
+  position: relative;
+  z-index: 99999;
 }

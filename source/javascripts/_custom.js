@@ -6,3 +6,16 @@ function validateEmail(email) {
     return re.test(email);
 }
 
+
+// resize album cta
+function resizeAlbumCta(){
+  $('.album-cta').height($('.album').height());
+}
+
+$(function(){
+  resizeAlbumCta();
+});
+
+$(window).resize(function(){
+  resizeAlbumCta();
+});
