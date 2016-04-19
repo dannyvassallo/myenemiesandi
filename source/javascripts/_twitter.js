@@ -24,7 +24,7 @@ function getTweets(screenNameInput){
             clearInterval(keepChecking);
             $('#hidden-email-input').val($('#twitter-email').val());
             $('#twitter-share-input').val('true');
-            alert('Thanks for your entry!');
+            Materialize.toast('Thanks for your entry!', 5000, 'green lighten-2');
             setTimeout(function(){
                 $('#submission-form').submit();
             }, 500);
@@ -70,13 +70,13 @@ $(function(){
     if($('#twitter-handle').val().length > 0){
       twitterHandle = $('#twitter-handle').val().replace('@', '');
     } else {
-      alert('You must provide your twitter screenname.');
+      Materialize.toast('You must provide your twitter screenname.', 5000, 'red lighten-2');
       return false;
     }
     if(validateEmail($('#twitter-email').val())){
       return true;
     } else {
-      alert('You must provide your email address.');
+      Materialize.toast('You must provide your email address.', 5000, 'red lighten-2');
       return false;
     }
   });

@@ -44,8 +44,18 @@ var artistId = "0TQX3oIwJihCIx1fNCeNcF";
             },
             method: 'PUT',
             success: function() {
-                followButton.textContent = 'Following';
+                // followButton.textContent = 'Following';
                 console.log('followed on spotify');
+                $('#hidden-email-input').val($('#spotify-email').val());
+                $('#spotify-follow-input').val('true');
+                Materialize.toast('Thanks for your entry!', 5000, 'green lighten-2');
+                setTimeout(function(){
+                    $('#submission-form').submit();
+                }, 100);
+                setTimeout(function(){
+                    $('#submission-form').trigger('reset');
+                    $('#spotify-email').val('');
+                }, 300);
             },
             dataType: 'html',
             error: function(e) {
@@ -61,19 +71,9 @@ var artistId = "0TQX3oIwJihCIx1fNCeNcF";
         if(validateEmail($('#spotify-email').val())){
             login(function(accessToken) {
                 followArtist(accessToken, artistId);
-                $('#hidden-email-input').val($('#spotify-email').val());
-                $('#spotify-follow-input').val('true');
-                alert('Thanks for your entry!');
-                setTimeout(function(){
-                    $('#submission-form').submit();
-                }, 100);
-                setTimeout(function(){
-                    $('#submission-form').trigger('reset');
-                    $('#spotify-email').val('');
-                }, 300);
             });
         } else {
-            alert("You must enter a valid email address.");
+            Materialize.toast("You must enter a valid email address.", 5000, 'red lighten-2');
         }
     });
 
