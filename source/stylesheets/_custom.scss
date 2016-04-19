@@ -61,3 +61,60 @@ body{
   position: relative;
   z-index: 99999;
 }
+
+// media queries
+@media (max-width: 1300px){
+  .album{
+    -ms-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+    margin-bottom: 0px;
+    margin-left: 0px;
+    margin-top: 0px;
+  }
+  .album-cta{
+    .valign{
+      -ms-transform: rotate(0deg);
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
+      width: 100%;
+      text-shadow: 2px 4px 3px #000;
+      h4{
+        font-size: 32px;
+      }
+    }
+  }
+  .band-promo{
+    margin-top: -10%;
+  }
+}
+
+@media (max-width: 1170px){
+  .cta span{
+    display: block;
+  }
+}
+
+@media (max-width: 800px){
+  .cta{
+    font-size: 20px;
+  }
+  .album-cta{
+    .valign{
+      -ms-transform: rotate(0deg);
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
+      width: 100%;
+      text-shadow: 2px 4px 3px #000;
+      h4{
+        font-size: 20px;
+      }
+    }
+  }
+}
+
+@media (max-width: 450px){
+  .cta{
+    font-size: 15px;
+  }
+}

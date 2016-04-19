@@ -9,7 +9,11 @@ function validateEmail(email) {
 
 // resize album cta
 function resizeAlbumCta(){
-  $('.album-cta').height($('.album').height());
+  if($(window).width() <= 600){
+    // nothing
+  } else {
+    $('.album-cta').height($('.album').height());
+  }
 }
 
 $(function(){
