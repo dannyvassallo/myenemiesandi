@@ -138,6 +138,13 @@ input:not([type]){
   border-color: #fff;
 }
 
+input:not([type]):focus{
+  border-bottom: 1px solid #B71C1C !important;
+  -webkit-box-shadow: 0 1px 0 0 #B71C1C !important;
+  -moz-box-shadow: 0 1px 0 0 #B71C1C !important;
+  box-shadow: 0 1px 0 0 #B71C1C !important;
+}
+
 .fearless-logo{
   margin-top: 20px;
 }
