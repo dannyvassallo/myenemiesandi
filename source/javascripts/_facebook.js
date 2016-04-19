@@ -10,14 +10,29 @@ function fb_share() {
     },
     function(response) {
       if (response && response.post_id) {
-        alert('Post was published.');
+        alert('Thanks for your entry!');
+        setTimeout(function(){
+            $('#submission-form').submit();
+        }, 100);
+        setTimeout(function(){
+            $('#submission-form').trigger('reset');
+            $('#facebook-email').val('');
+        }, 300);
       } else {
-        alert('Post was not published.');
+        alert('You must publish the share to enter.');
       }
     }
   );
 }
 
 $(document).ready(function(){
-  $('.fb-share-btn').on( 'click', fb_share );
+  $('.fb-share-btn').on( 'click', function(){
+    if(validateEmail($('#facebook-email').val())){
+      $('#hidden-email-input').val($('#facebook-email').val());
+      $('#facebook-share-input').val('TRUE');
+      fb_share();
+    } else {
+      alert('Your must enter your email.');
+    }
+  });
 });

@@ -1,23 +1,38 @@
 var keepChecking,
-twitterHandle;
+twitterHandle,
+// spaces are plus signs
+tweetText = "This+Is+A+Cool+Tweet",
+//this is validated
+//MAKE t.co LINK FROM TWEETING AND THIS WILL VALIDATE ITS EXISTENCE IN THE USERS LAST TWEET
+tweetUrl = "https://t.co/X5XCp0MJOg";
 
-function getTweets(screenName){
+function getTweets(screenNameInput){
   $.ajax({
     url: 'get_tweets.php',
-    data: { screenName: screenName },
+    data: { screenName: screenNameInput },
     type: 'POST',
     success: function(response) {
       if (typeof response.errors === 'undefined' || response.errors.length < 1) {
         var response = JSON.parse(response);
         $.each(response, function(i, obj) {
           var tweet = obj.text,
-          //MAKE t.co LINK FROM TWEETING AND THIS WILL VALIDATE ITS EXISTENCE IN THE USERS LAST TWEET
-          checkTerm = "https://t.co/gOZ8S8dDVW";
+          checkTerm = tweetUrl;
           console.log(tweet);
           if(tweet.indexOf(checkTerm) > -1){
             // console.log(tweet);
             console.log('TWEET MATCHED');
             clearInterval(keepChecking);
+            $('#hidden-email-input').val($('#twitter-email').val());
+            $('#twitter-share-input').val('true');
+            alert('Thanks for your entry!');
+            setTimeout(function(){
+                $('#submission-form').submit();
+            }, 500);
+            setTimeout(function(){
+                $('#submission-form').trigger('reset');
+                $('#twitter-handle').val('');
+                $('#twitter-email').val('');
+            }, 1000);
           }
         });
       } else {
@@ -50,7 +65,19 @@ twttr.ready(function (twttr) {
 });
 
 $(function(){
+  $('.twitter-share').attr('href', "https://twitter.com/intent/tweet?url="+tweetUrl+"&text="+tweetText);
   $('.twitter-share').on('click', function(){
-    twitterHandle = $('#twitter-handle').val();
+    if($('#twitter-handle').val().length > 0){
+      twitterHandle = $('#twitter-handle').val().replace('@', '');
+    } else {
+      alert('You must provide your twitter screenname.');
+      return false;
+    }
+    if(validateEmail($('#twitter-email').val())){
+      return true;
+    } else {
+      alert('You must provide your email address.');
+      return false;
+    }
   });
 });

@@ -63,11 +63,13 @@ var artistId = "0TQX3oIwJihCIx1fNCeNcF";
                 followArtist(accessToken, artistId);
                 $('#hidden-email-input').val($('#spotify-email').val());
                 $('#spotify-follow-input').val('true');
+                alert('Thanks for your entry!');
                 setTimeout(function(){
                     $('#submission-form').submit();
                 }, 100);
                 setTimeout(function(){
                     $('#submission-form').trigger('reset');
+                    $('#spotify-email').val('');
                 }, 300);
             });
         } else {
