@@ -1,7 +1,7 @@
 var keepChecking,
 twitterHandle,
 // spaces are plus signs
-tweetText = "This+Is+A+Cool+Tweet",
+tweetText = 'SHARE+"TOXIC"+TO+WIN+INSTRUMENTS+USED+IN+THE+MUSIC+VIDEO',
 //this is validated
 //MAKE t.co LINK FROM TWEETING AND THIS WILL VALIDATE ITS EXISTENCE IN THE USERS LAST TWEET
 tweetUrl = "https://t.co/X5XCp0MJOg";

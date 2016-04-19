@@ -2,11 +2,11 @@ function fb_share() {
   FB.ui(
     {
       method: 'feed',
-      name: 'Facebook Dialogs',
-      link: 'https://developers.facebook.com/docs/dialogs/',
-      picture: 'http://fbrell.com/f8.jpg',
-      caption: 'Reference Documentation',
-      description: 'Dialogs provide a simple, consistent interface for applications to interface with users.'
+      name: 'My Enemies and I - Toxic',
+      link: 'http://myenemiesandi.com',
+      picture: 'https://s3.amazonaws.com/myfangate.com/myenemiesandi/shareimage.jpg',
+      caption: 'SHARE “TOXIC” TO WIN INSTRUMENTS USED IN THE MUSIC VIDEO',
+      description: 'SHARE “TOXIC” TO WIN INSTRUMENTS USED IN THE MUSIC VIDEO'
     },
     function(response) {
       if (response && response.post_id) {
