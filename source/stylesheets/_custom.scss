@@ -2,3 +2,20 @@
 #hidden_iframe, #submission-form{
   display: none;
 }
+
+.full-w{
+  width: 100%;
+}
+
+.band-logo{
+  margin-bottom: -28%;
+  z-index: 9999;
+  position: relative;
+}
+
+body{
+  background-color: black;
+  color: white !important;
+  font-family: 'Lucida Bright';
+  text-transform: uppercase;
+}
