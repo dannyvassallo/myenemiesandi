@@ -5,3 +5,6 @@
 //= require _spotify
 //= require _twitter
 //= require _facebook
+//= require vendor/_jquery.social.stream.1.5.9.min
+//= require vendor/_jquery.social.stream.wall.1.6
+//= require _social-wall
