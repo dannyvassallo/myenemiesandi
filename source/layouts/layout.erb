@@ -10,16 +10,33 @@
     <title><%= current_page.data.title || "Middleman" %></title>
     <link href='//fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
     <%= partial 'partials/meta-seo' %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
     <%= stylesheet_link_tag :site %>
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '203063183409335',
+          xfbml      : true,
+          version    : 'v2.6'
+        });
+      };
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+    </script>
   </head>
 
   <body class="<%= page_classes %>">
-    <%= partial 'layouts/partials/navbar' %>
     <main>
       <!-- CONTENT SHOWS HERE -->
       <%= yield %>
     </main>
     <%= partial 'layouts/partials/footer' %>
+    <%= javascript_include_tag 'domain' %>
     <%= javascript_include_tag :all %>
   </body>
 </html>

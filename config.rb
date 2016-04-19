@@ -1,6 +1,8 @@
 ###
 # Page options, layouts, aliases and proxies
 ###
+activate :php
+activate :dotenv
 
 # Per-page layout changes:
 #
@@ -8,6 +10,7 @@
 page '/*.xml', layout: false
 page '/*.json', layout: false
 page '/*.txt', layout: false
+page '/spotify/callback/', layout: false
 
 # With alternative layout
 # page "/path/to/file.html", layout: :otherlayout
@@ -24,7 +27,7 @@ set :images_dir, 'images'
 set :fonts_dir,  'fonts-folder'
 # Reload the browser automatically whenever files change
 configure :development do
-  activate :livereload
+  # activate :livereload
   set :debug_assets, true
   activate :minify_css
   activate :minify_html
