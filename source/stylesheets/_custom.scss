@@ -57,6 +57,9 @@ body{
 
 .cta{
   margin-top: 5%;
+}
+
+.email-cta, .cta, .email-cta{
   font-size: 25px;
   text-shadow: 2px 4px 3px #000;
   position: relative;
@@ -91,13 +94,13 @@ body{
 }
 
 @media (max-width: 1170px){
-  .cta span{
+  .cta span, .email-cta span{
     display: block;
   }
 }
 
 @media (max-width: 800px){
-  .cta{
+  .cta, .email-cta{
     font-size: 20px;
   }
   .album-cta{
@@ -115,7 +118,12 @@ body{
 }
 
 @media (max-width: 450px){
-  .cta{
+  .cta, .email-cta{
     font-size: 15px;
   }
+}
+
+
+input:not([type]){
+  border-color: #fff;
 }
