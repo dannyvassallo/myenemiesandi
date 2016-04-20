@@ -4,7 +4,22 @@
 }
 
 .btn{
+  font-family: 'Lato' !important;
   font-size: 12px;
+  width: 219px !important;
+  .valign-wrapper{
+    margin-top: -12px;
+    p{
+      width: 100%;
+    }
+    i{
+      padding-right: 7px;
+    }
+  }
+}
+
+.itunes{
+  width: 150px;
 }
 
 .full-w{
@@ -12,9 +27,9 @@
 }
 
 .band-logo{
-  margin-bottom: -15%;
+  margin-bottom: -10%;
   position: relative;
-  margin-top: -4%;
+  margin-top: -2%;
 }
 
 h1,h2,h3,h4,h5,h6{
@@ -55,8 +70,8 @@ body{
 }
 
 .band-promo{
-  margin-top: -19%;
-  margin-bottom: -25%;
+  margin-top: -14%;
+  margin-bottom: -20%;
 }
 
 .cta{
@@ -103,11 +118,37 @@ body{
   }
 }
 
-@media (min-width: 600px) and (max-width: 830px){
-  .btn{
-    font-size: 6px;
+// @media (min-width: 600px) and (max-width: 830px){
+//   .btn{
+//     font-size: 6px;
+//   }
+// }
+@media (max-width: 992px){
+  .album{
+    -ms-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+    margin-bottom: 0px;
+    margin-left: 0px;
+    margin-top: 0px;
+  }
+  .album-cta{
+    .valign{
+      -ms-transform: rotate(0deg);
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
+      width: 100%;
+      text-shadow: 2px 4px 3px #000;
+      h4{
+        font-size: 20px;
+      }
+    }
+  }
+  .itunes{
+    width: 100px;
   }
 }
+
 
 @media (max-width: 800px){
   .cta, .email-cta{
@@ -127,12 +168,63 @@ body{
   }
 }
 
+@media (min-width: 601px) and (max-width: 615px){
+  .album-cta{
+    .valign{
+      -ms-transform: rotate(0deg);
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
+      width: 100%;
+      text-shadow: 2px 4px 3px #000;
+      h4{
+        font-size: 12px;
+      }
+    }
+  }
+  .itunes{
+    margin-top: 2%;
+    width: 50px;
+  }
+  .itunes-valign{
+    margin-top: -20%;
+  }
+}
+
+@media (max-width: 600px){
+  .album-cta{
+    .valign{
+      -ms-transform: rotate(0deg);
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
+      width: 100%;
+      text-shadow: 2px 4px 3px #000;
+      h4{
+        font-size: 32px;
+      }
+    }
+  }
+  .video-container{
+    margin-top: 2%;
+  }
+  .itunes{
+    margin-top: 2%;
+    width: 150px;
+  }
+  .itunes-valign{
+    margin-top: 2%;
+    margin-bottom: 2%;
+  }
+}
+
 @media (max-width: 450px){
   .cta, .email-cta{
     font-size: 15px;
   }
 }
 
+input{
+  background-color: rgba(255,255,255,0.2) !important;
+}
 
 input:not([type]){
   border-color: #fff;
@@ -153,4 +245,21 @@ input:not([type]):focus{
   margin-top: 3%;
 }
 
+.video-container{
+  border: 5px solid #C62828;
+  box-shadow: 0px -2px 20px 5px rgba(255,255,255, 0.2);
+}
 
+.container-fluid{
+  max-width: 1242px;
+  margin: 0 auto;
+}
+
+.email-wrap, .btn{
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+
+.contest{
+  margin-bottom: 2%;
+}

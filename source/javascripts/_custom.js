@@ -10,7 +10,8 @@ function validateEmail(email) {
 // resize album cta
 function resizeAlbumCta(){
   if($(window).width() <= 600){
-    // nothing
+    newH = ($('.avail').height() + $('.itunes').height() + 50);
+    $('.album-cta').height(newH);
   } else {
     $('.album-cta').height($('.album').height());
   }
