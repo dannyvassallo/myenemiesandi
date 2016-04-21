@@ -12,15 +12,15 @@ class TwitterProxy {
   /**
    * The tokens, keys and secrets from the app you created at https://dev.twitter.com/apps
    */
-  private $config = [
+  private $config = array(
     'use_whitelist' => true, // If you want to only allow some requests to use this script.
     'base_url' => 'https://api.twitter.com/1.1/'
-  ];
+  );
 
   /**
    * Only allow certain requests to twitter. Stop randoms using your server as a proxy.
    */
-  private $whitelist = [];
+  private $whitelist = array();
 
   /**
    *  @param  string  $oauth_access_token     OAuth Access Token      ('Access token' on https://apps.twitter.com)
@@ -39,7 +39,7 @@ class TwitterProxy {
   }
 
   private function buildBaseString($baseURI, $method, $params) {
-    $r = [];
+    $r = array();
     ksort($params);
     foreach($params as $key=>$value){
       $r[] = "$key=" . rawurlencode($value);
@@ -50,7 +50,7 @@ class TwitterProxy {
 
   private function buildAuthorizationHeader($oauth) {
     $r = 'Authorization: OAuth ';
-    $values = [];
+    $values = array();
     foreach($oauth as $key => $value) {
       $values[] = "$key=\"" . rawurlencode($value) . "\"";
     }
@@ -76,14 +76,14 @@ class TwitterProxy {
     $base_url = $this->config['base_url'] . $url_parts['path']; // URL without the query
 
     // Set up the OAuth Authorization array
-    $oauth = [
+    $oauth = array(
       'oauth_consumer_key' => $this->config['consumer_key'],
       'oauth_nonce' => time(),
       'oauth_signature_method' => 'HMAC-SHA1',
       'oauth_token' => $this->config['oauth_access_token'],
       'oauth_timestamp' => time(),
       'oauth_version' => '1.0'
-    ];
+    );
 
     $base_info = $this->buildBaseString($base_url, 'GET', array_merge($oauth, $url_arguments));
 
@@ -92,18 +92,18 @@ class TwitterProxy {
     $oauth['oauth_signature'] = base64_encode(hash_hmac('sha1', $base_info, $composite_key, true));
 
     // Make Requests
-    $header = [
+    $header = array(
       $this->buildAuthorizationHeader($oauth),
       'Expect:'
-    ];
-    $options = [
+    );
+    $options = array(
       CURLOPT_HTTPHEADER => $header,
       //CURLOPT_POSTFIELDS => $postfields,
       CURLOPT_HEADER => false,
       CURLOPT_URL => $full_url,
       CURLOPT_RETURNTRANSFER => true,
       CURLOPT_SSL_VERIFYPEER => false
-    ];
+    );
 
     $feed = curl_init();
     curl_setopt_array($feed, $options);
